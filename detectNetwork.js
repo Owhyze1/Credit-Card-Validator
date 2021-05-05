@@ -20,24 +20,44 @@ var detectNetwork = function(cardNumber) {
   }
 
   var prefix = cardNumber.slice(0,2);
+  var visaPrefix = cardNumber.slice(0,1);
+  var discoverPrefix = cardNumber.slice(0,4);
+  var maestroPrefix = discoverPrefix;
   var length = cardNumber.length;
   var networkName = '';
-  // console.log(`testing ${cardNumber}`);
-  // console.log(length);
-  // console.log( cardNumber[0]);
 
-  if (length === 14 && (prefix === '38' || prefix === '39')){
-      networkName = 'Diner\'s Club';
-  } else if (length === 15 && (prefix === '34' || prefix === '37')) {
+  var dinersClub = ['38','39'];
+  var visa = ['4'];
+  var amex = ['34','37'];
+  var masterCard = ['51', '52', '53', '54', '55'];
+  var discover = ['6011', '644', '645', '646', '647', '648', '649', '65'];
+  var maestro = ['5018', '5020', '5038', '6304'];
+
+
+  if (length === 14 && isPrefixCorrect(dinersClub, cardNumber)){
+    networkName = 'Diner\'s Club';
+  } else if (length === 15 && isPrefixCorrect(amex, cardNumber)) {
     networkName = 'American Express';
-  } else if ((length === 13 || length === 16 || length === 19) && prefix[0] === '4'){
+  } else if ((length === 13 || length === 16 || length === 19) && isPrefixCorrect(visa, cardNumber)){
     networkName = 'Visa';
-  } else if (length === 16 && (prefix >= '51' && prefix <= '55')){
+  } else if (length === 16 && isPrefixCorrect(masterCard, cardNumber)){
     networkName = 'MasterCard';
+  } else if ((length === 16 || length === 19) && isPrefixCorrect(discover, cardNumber)){
+    networkName = 'Discover';
+  } else if ((length >= 12 && length <= 19) && isPrefixCorrect(maestro, cardNumber)){
+    networkName = 'Maestro'
   }
-  // console.log(`network name: ${networkName}`);
   return networkName;
 };
+
+var isPrefixCorrect = function(cardPrefixArray, cardNumber){
+  for (var i = 0; i < cardPrefixArray.length; i++){
+    if (cardNumber.startsWith(cardPrefixArray[i])){
+      return true;
+    }
+  }
+  return false;
+}
 
 // test functions
 
