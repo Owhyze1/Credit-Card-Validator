@@ -104,13 +104,13 @@ describe('MasterCard', function() {
   var expect = chai.expect;
 
   it('has a prefix of 51 and a length of 14', function() {
-    expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
+    expect(detectNetwork('5112345678901234')).to.equal('MasterCard', `'5112345678901234' should be MasterCard`);
   });
   it('has a prefix of 52 and a length of 14', function() {
-    expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
+    expect(detectNetwork('5212345678901234')).to.equal('MasterCard', `'5212345678901234' should be MasterCard`);
   });
   it('has a prefix of 53 and a length of 14', function() {
-    expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
+    expect(detectNetwork('5312345678901234')).to.equal('MasterCard', `'5312345678901234' should be MasterCard`);
   });
 
   // You can also use should instead of expect, which changes the style
@@ -120,13 +120,12 @@ describe('MasterCard', function() {
   // and should, but that's just for learning), so once you've gotten
   // these tests to pass using should syntax, refactor your tests to
   // use either expect or should, but not both.
-  var should = chai.should();
 
   it('has a prefix of 54 and a length of 16', function() {
-    detectNetwork('5412345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5412345678901234')).to.equal('MasterCard', `'5412345678901234' should be MasterCard`);
   });
   it('has a prefix of 55 and a length of 16', function() {
-    detectNetwork('5512345678901234').should.equal('MasterCard');
+    expect(detectNetwork('5512345678901234')).to.equal('MasterCard', `'5512345678901234' should be MasterCard`);
   });
 });
 
