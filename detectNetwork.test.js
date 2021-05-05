@@ -132,8 +132,57 @@ describe('MasterCard', function() {
 describe('Discover', function() {
   // Tests without a function will be marked as "pending" and not run
   // Implement these tests (and others) and make them pass!
-  it('has a prefix of 6011 and a length of 16');
-  it('has a prefix of 6011 and a length of 19');
+  var expect = chai.expect;
+
+  it('has a prefix of 6011 and a length of 16', function() {
+    expect(detectNetwork('6011567890123456')).to.equal('Discover', `'6011567890123456' should be Discover`);
+  });
+  it('has a prefix of 6011 and a length of 19', function() {
+    expect(detectNetwork('6011567890123456789')).to.equal('Discover', `'6011567890123456789' should be Discover`);
+  });
+  it('has a prefix of 644 and a length of 16', function() {
+    expect(detectNetwork('6444567890123456')).to.equal('Discover', `'6444567890123456' should be Discover`);
+  });
+  it('has a prefix of 644 and a length of 19', function() {
+    expect(detectNetwork('6444567890123456789')).to.equal('Discover', `'6444567890123456789' should be Discover`);
+  });
+  it('has a prefix of 645 and a length of 16', function() {
+    expect(detectNetwork('6454567890123456')).to.equal('Discover', `'6454567890123456' should be Discover`);
+  });
+  it('has a prefix of 645 and a length of 19', function() {
+    expect(detectNetwork('6454567890123456789')).to.equal('Discover', `'6454567890123456789' should be Discover`);
+  });
+  it('has a prefix of 646 and a length of 16', function() {
+    expect(detectNetwork('6464567890123456')).to.equal('Discover', `'6464567890123456' should be Discover`);
+  });
+  it('has a prefix of 646 and a length of 19', function() {
+    expect(detectNetwork('6464567890123456789')).to.equal('Discover', `'6464567890123456789' should be Discover`);
+  });
+  it('has a prefix of 647 and a length of 16', function() {
+    expect(detectNetwork('6474567890123456')).to.equal('Discover', `'6474567890123456' should be Discover`);
+  });
+  it('has a prefix of 647 and a length of 19', function() {
+    expect(detectNetwork('6474567890123456789')).to.equal('Discover', `'6474567890123456789' should be Discover`);
+  });
+  it('has a prefix of 648 and a length of 16', function() {
+    expect(detectNetwork('6484567890123456')).to.equal('Discover', `'6484567890123456' should be Discover`);
+  });
+  it('has a prefix of 648 and a length of 19', function() {
+    expect(detectNetwork('6484567890123456789')).to.equal('Discover', `'6484567890123456789' should be Discover`);
+  });
+  it('has a prefix of 649 and a length of 16', function() {
+    expect(detectNetwork('6494567890123456')).to.equal('Discover', `'6494567890123456' should be Discover`);
+  });
+  it('has a prefix of 649 and a length of 19', function() {
+    expect(detectNetwork('6494567890123456789')).to.equal('Discover', `'6494567890123456' should be Discover`);
+  });
+  it('has a prefix of 65 and a length of 16', function() {
+    expect(detectNetwork('6534567890123456')).to.equal('Discover', `'6534567890123456' should be Discover`);
+  });
+  it('has a prefix of 65 and a length of 19', function() {
+    expect(detectNetwork('6534567890123456789')).to.equal('Discover', `'6534567890123456789' should be Discover`);
+  });
+
 });
 
 describe('Maestro', function() {
