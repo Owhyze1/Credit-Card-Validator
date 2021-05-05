@@ -19,10 +19,6 @@ var detectNetwork = function(cardNumber) {
     return '';
   }
 
-  var prefix = cardNumber.slice(0,2);
-  var visaPrefix = cardNumber.slice(0,1);
-  var discoverPrefix = cardNumber.slice(0,4);
-  var maestroPrefix = discoverPrefix;
   var length = cardNumber.length;
   var networkName = '';
 
@@ -32,7 +28,6 @@ var detectNetwork = function(cardNumber) {
   var masterCard = ['51', '52', '53', '54', '55'];
   var discover = ['6011', '644', '645', '646', '647', '648', '649', '65'];
   var maestro = ['5018', '5020', '5038', '6304'];
-
 
   if (length === 14 && isPrefixCorrect(dinersClub, cardNumber)){
     networkName = 'Diner\'s Club';
@@ -58,21 +53,3 @@ var isPrefixCorrect = function(cardPrefixArray, cardNumber){
   }
   return false;
 }
-
-// test functions
-
-// detectNetwork('38345678901234'); // Diner's Club
-// detectNetwork('39345678901234'); // Diner's Club
-// detectNetwork('343456789012345'); // American Express
-// detectNetwork('373456789012345'); // American Express
-// detectNetwork('4123456789012'); // Visa
-// detectNetwork('4123456789012345'); // Visa
-// detectNetwork('4123456789012345678'); // Visa
-// detectNetwork('5112345678901234') // MasterCard
-// detectNetwork('5212345678901234') // MasterCard
-// detectNetwork('5312345678901234') // MasterCard
-// detectNetwork('5412345678901234') // MasterCard
-// detectNetwork('5512345678901234') // MasterCard
-
-
-
