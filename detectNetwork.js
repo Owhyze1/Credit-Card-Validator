@@ -19,20 +19,20 @@ var detectNetwork = function(cardNumber) {
     return '';
   }
 
-  var prefix = Number(cardNumber.slice(0,2));
+  var prefix = cardNumber.slice(0,2);
   var length = cardNumber.length;
   var networkName = '';
   // console.log(`testing ${cardNumber}`);
   // console.log(length);
   // console.log( cardNumber[0]);
 
-  if (length === 14 && (prefix === 38 || prefix === 39)){
+  if (length === 14 && (prefix === '38' || prefix === '39')){
       networkName = 'Diner\'s Club';
-  } else if (length === 15 && (prefix === 34 || prefix === 37)) {
+  } else if (length === 15 && (prefix === '34' || prefix === '37')) {
     networkName = 'American Express';
-  } else if ((length === 13 || length === 16 || length === 19) && cardNumber[0] === '4'){
+  } else if ((length === 13 || length === 16 || length === 19) && prefix[0] === '4'){
     networkName = 'Visa';
-  } else if (length === 16 && (prefix >= 51 && prefix <= 55)){
+  } else if (length === 16 && (prefix >= '51' && prefix <= '55')){
     networkName = 'MasterCard';
   }
   // console.log(`network name: ${networkName}`);
