@@ -187,6 +187,29 @@ describe('Discover', function() {
 
 describe('Maestro', function() {
   // Write full test coverage for the Maestro card
+  var expect = chai.expect;
+
+  var prefixTestValues = ['5018', '5020', '5038', '6304'];
+  var endOfCardNumber = [
+    '56789012',
+    '567890123',
+    '5678901234',
+    '56789012345',
+    '567890123456',
+    '5678901234567',
+    '56789012345678',
+    '567890123456789'
+  ];
+
+  for (var i = 0; i < prefixTestValues.length; i++){
+    for (var j = 0; j < endOfCardNumber.length; j++ ){
+      var testValue = prefixTestValues[i] + endOfCardNumber[j];
+      var length = testValue.length;
+      it(`it has a prefix of ${prefixTestValues[i]} and a length of ${length}`, function() {
+        expect(detectNetwork(testValue)).to.equal('Maestro', `${testValue} should be Maestro`);
+      })
+    }
+  }
 });
 
 
