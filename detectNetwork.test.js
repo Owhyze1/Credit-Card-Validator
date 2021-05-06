@@ -182,7 +182,6 @@ describe('Discover', function() {
   it('has a prefix of 65 and a length of 19', function() {
     expect(detectNetwork('6534567890123456789')).to.equal('Discover', `'6534567890123456789' should be Discover`);
   });
-
 });
 
 describe('Maestro', function() {
@@ -211,5 +210,3 @@ describe('Maestro', function() {
     }
   }
 });
-
-
