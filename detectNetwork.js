@@ -40,7 +40,9 @@ var detectNetwork = function(cardNumber) {
   } else if ((length === 16 || length === 19) && isPrefixCorrect(discover, cardNumber)){
     networkName = 'Discover';
   } else if ((length >= 12 && length <= 19) && isPrefixCorrect(maestro, cardNumber)){
-    networkName = 'Maestro'
+    networkName = 'Maestro';
+  } else if ((length >= 16 && length <= 19) && isCorrectPrefixForChinaUnionPay(cardNumber)){
+    networkName = 'China UnionPay';
   }
   return networkName;
 };
@@ -50,6 +52,21 @@ var isPrefixCorrect = function(cardPrefixArray, cardNumber){
     if (cardNumber.startsWith(cardPrefixArray[i])){
       return true;
     }
+  }
+  return false;
+}
+
+var isCorrectPrefixForChinaUnionPay = function(cardNumber){
+  var sixDigitPrefix = cardNumber.slice(0,6);
+  var fourDigitPrefix = cardNumber.slice(0,4);
+  var threeDigitPrefix = cardNumber.slice(0,3);
+
+  if (sixDigitPrefix >= '622126' && sixDigitPrefix <= '622295'){
+    return true;
+  } else if (fourDigitPrefix >= '6282' && fourDigitPrefix <= '6288'){
+    return true;
+  } else if (threeDigitPrefix >= '624' && threeDigitPrefix <= '626'){
+    return true;
   }
   return false;
 }
