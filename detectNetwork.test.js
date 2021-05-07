@@ -214,42 +214,30 @@ describe('Maestro', function() {
 });
 
 describe('China UnionPay', function() {
-  var expect = chai.expect;
-  var endOfNumber = '1234567890123456789';
-  var maxLength = 19;
-  var minLength = 16;
-  testValue = '';
 
+  var testChinaUnionPay = function(prefixStart, prefixEnd){
+    var minLength = 16;
+    var maxLength = 19;
+    var testValue = '';
+    var testValueLength;
+    var endOfNumber = '1234567890123456789';
 
-  for (var prefix = 622200; prefix <= 622925; prefix++){
-    for (var length = minLength; length <= maxLength; length++){
-      var testValueLength = length - String(prefix).length;
-      testValue = prefix + endOfNumber.slice(0,testValueLength);
-      it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
-      });
+    var expect = chai.expect;
+
+    for (var prefix = prefixStart; prefix <= prefixEnd; prefix++){
+      for (var length = minLength; length <= maxLength; length++){
+        testValueLength = length - String(prefix).length;
+        testValue = prefix + endOfNumber.slice(0,testValueLength);
+        it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
+          expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
+        });
+      }
     }
   }
 
-  for (var prefix = 624; prefix <= 626; prefix++){
-    for (var length = minLength; length <= maxLength; length++){
-      var testValueLength = length - String(prefix).length;
-      testValue = prefix + endOfNumber.slice(0,testValueLength);
-      it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
-      });
-    }
-  }
-
-  for (var prefix = 6282; prefix <= 6288; prefix++){
-    for (var length = minLength; length <= maxLength; length++){
-      var testValueLength = length - String(prefix).length;
-      testValue = prefix + endOfNumber.slice(0,testValueLength);
-      it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
-        expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
-      });
-    }
-  }
+  testChinaUnionPay(622126, 622925);
+  testChinaUnionPay(624,626);
+  testChinaUnionPay(6282,6288);
 });
 
 
