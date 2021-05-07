@@ -60,15 +60,15 @@ var isPrefixCorrect = function(cardPrefixArray, cardNumber){
 }
 
 var isCorrectPrefixForChinaUnionPay = function(cardNumber){
-  var sixDigitPrefix = cardNumber.slice(0,6);
-  var fourDigitPrefix = cardNumber.slice(0,4);
-  var threeDigitPrefix = cardNumber.slice(0,3);
+  var sixDigitPrefix = Number(cardNumber.slice(0,6));
+  var fourDigitPrefix = Number(cardNumber.slice(0,4));
+  var threeDigitPrefix = Number(cardNumber.slice(0,3));
 
-  if (sixDigitPrefix >= '622126' && sixDigitPrefix <= '622295'){
+  if (sixDigitPrefix >= 622126 && sixDigitPrefix <=622925){
     return true;
-  } else if (fourDigitPrefix >= '6282' && fourDigitPrefix <= '6288'){
+  } else if (fourDigitPrefix >= 6282 && fourDigitPrefix <= 6288){
     return true;
-  } else if (threeDigitPrefix >= '624' && threeDigitPrefix <= '626'){
+  } else if (threeDigitPrefix >= 624 && threeDigitPrefix <= 626){
     return true;
   }
   return false;
