@@ -212,3 +212,38 @@ describe('Maestro', function() {
     }
   }
 });
+
+describe('China UnionPay', function() {
+  // 622126 - 622925
+  // 624 - 626
+  // 6282 - 6288
+  // length 16 -19
+  var expect = chai.expect;
+  var endOfNumber = '1234567890123456789';
+  var maxLength = 19;
+  var minLength = 16;
+  testValue = '';
+
+
+  for (var prefix = 622200; prefix <= 622925; prefix++){
+    // prefix = 622126
+    for (var length = minLength; length <= maxLength; length++){
+      var testValueLength = length - String(prefix).length;
+      testValue = prefix + endOfNumber.slice(0,testValueLength);
+      it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
+        expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
+      });
+    }
+  }
+
+});
+
+
+
+
+
+
+describe('Switch', function() {
+  // 4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759
+  // length 16, 18, 19
+})
