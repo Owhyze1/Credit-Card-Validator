@@ -214,10 +214,6 @@ describe('Maestro', function() {
 });
 
 describe('China UnionPay', function() {
-  // 622126 - 622925
-  // 624 - 626
-  // 6282 - 6288
-  // length 16 -19
   var expect = chai.expect;
   var endOfNumber = '1234567890123456789';
   var maxLength = 19;
@@ -245,7 +241,15 @@ describe('China UnionPay', function() {
     }
   }
 
-
+  for (var prefix = 6282; prefix <= 6288; prefix++){
+    for (var length = minLength; length <= maxLength; length++){
+      var testValueLength = length - String(prefix).length;
+      testValue = prefix + endOfNumber.slice(0,testValueLength);
+      it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
+        expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
+      });
+    }
+  }
 });
 
 
