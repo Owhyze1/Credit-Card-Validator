@@ -28,11 +28,14 @@ var detectNetwork = function(cardNumber) {
   var masterCard = ['51', '52', '53', '54', '55'];
   var discover = ['6011', '644', '645', '646', '647', '648', '649', '65'];
   var maestro = ['5018', '5020', '5038', '6304'];
+  var switchCard = ['4903', '4905', '4911', '4936', '564182', '633110', '6333', '6759'];
 
   if (length === 14 && isPrefixCorrect(dinersClub, cardNumber)){
     networkName = 'Diner\'s Club';
-  } else if (length === 15 && isPrefixCorrect(amex, cardNumber)) {
+  } else if (length === 15 && isPrefixCorrect(amex, cardNumber)){
     networkName = 'American Express';
+  } else if ((length === 16 || length === 18 || length === 19) && isPrefixCorrect(switchCard, cardNumber)){
+    networkName = 'Switch';
   } else if ((length === 13 || length === 16 || length === 19) && isPrefixCorrect(visa, cardNumber)){
     networkName = 'Visa';
   } else if (length === 16 && isPrefixCorrect(masterCard, cardNumber)){
@@ -45,7 +48,7 @@ var detectNetwork = function(cardNumber) {
     networkName = 'China UnionPay';
   }
   return networkName;
-};
+}
 
 var isPrefixCorrect = function(cardPrefixArray, cardNumber){
   for (var i = 0; i < cardPrefixArray.length; i++){
