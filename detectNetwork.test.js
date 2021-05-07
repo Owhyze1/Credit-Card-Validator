@@ -205,7 +205,7 @@ describe('Maestro', function() {
       var testValue = prefixTestValues[i] + endOfCardNumber[j];
       var length = testValue.length;
       (function(testValue, length) {
-        it('it has a prefix of ' + testValue + ' and a length of ' + length + ' ', function() {
+        it('it has a prefix of ' + prefixTestValues[i] + ' and a length of ' + length + ' ', function() {
           expect(detectNetwork(testValue)).to.equal('Maestro', `${testValue} should be Maestro`);
         });
       })(testValue, length)
