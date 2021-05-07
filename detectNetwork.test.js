@@ -245,11 +245,26 @@ describe('China UnionPay', function() {
 });
 
 
-
-
-
-
 describe('Switch', function() {
-  // 4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759
-  // length 16, 18, 19
-})
+  var prefixes = [4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759];
+  var approvedLengths = [16, 18, 19];
+  var endOfCardNumber = '1234567890123456789';
+  var prefix;
+  var testValue = '';
+  var testValueLength;
+  var expect = chai.expect;
+
+  for (var i = 0; i < prefixes.length; i++){
+    prefix = prefixes[i];
+    for (var j = 0; j < approvedLengths.length; j++){
+      testValueLength = approvedLengths[j] - String(prefix).length;
+      testValue = prefix + endOfCardNumber.slice(0,testValueLength);
+
+      (function(prefix, testValue, length){
+        it(`it has a prefix of ${prefix} and a length of ${length}`, function() {
+          expect(detectNetwork(testValue)).to.equal('Switch', `${testValue} should be Switch`);
+        });
+      })(prefix, testValue, testValueLength)
+    }
+  }
+});
