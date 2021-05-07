@@ -226,7 +226,6 @@ describe('China UnionPay', function() {
 
 
   for (var prefix = 622200; prefix <= 622925; prefix++){
-    // prefix = 622126
     for (var length = minLength; length <= maxLength; length++){
       var testValueLength = length - String(prefix).length;
       testValue = prefix + endOfNumber.slice(0,testValueLength);
@@ -235,6 +234,17 @@ describe('China UnionPay', function() {
       });
     }
   }
+
+  for (var prefix = 624; prefix <= 626; prefix++){
+    for (var length = minLength; length <= maxLength; length++){
+      var testValueLength = length - String(prefix).length;
+      testValue = prefix + endOfNumber.slice(0,testValueLength);
+      it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
+        expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
+      });
+    }
+  }
+
 
 });
 
