@@ -226,11 +226,15 @@ describe('China UnionPay', function() {
 
     for (var prefix = prefixStart; prefix <= prefixEnd; prefix++){
       for (var length = minLength; length <= maxLength; length++){
+
         testValueLength = length - String(prefix).length;
         testValue = prefix + endOfNumber.slice(0,testValueLength);
-        it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
-          expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
-        });
+
+        (function(prefix, testValue, length) {
+          it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
+            expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
+          });
+        })(prefix, testValue, length)
       }
     }
   }
