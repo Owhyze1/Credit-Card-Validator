@@ -43,7 +43,6 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
 });
 describe('Diner\'s Club', function() {
   // Be careful, tests can have bugs too...
-
   it('has a prefix of 38 and a length of 14', function() {
     // throw new Error('Delete me!');
     if ( detectNetwork('38345678901234') !== 'Diner\'s Club') {
@@ -238,12 +237,10 @@ describe('China UnionPay', function() {
       }
     }
   }
-
   testChinaUnionPay(622126, 622925);
   testChinaUnionPay(624,626);
   testChinaUnionPay(6282,6288);
 });
-
 
 describe('Switch', function() {
   var prefixes = [4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759];
