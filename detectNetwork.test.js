@@ -23,7 +23,7 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
 
   it('Doesn\'t throw an error, so it doesn\'t fail', function() {
     // This test doesn't really test anything at all! It will pass no matter what.
-    var even = function(num){
+    var even = function(num) {
       return num / 2 === 0;
     };
     return even(10) === true;
@@ -32,11 +32,11 @@ describe('Introduction to Mocha Tests - READ ME FIRST', function() {
   // In tests, we want to compare the expected behavior to the actual behavior.
   // A test should only fail if the expected behavior doesn't match the actual.
   it('Throws an error when expected behavior does not match actual behavior', function() {
-    var even = function(num){
+    var even = function(num) {
       return num % 2 === 0;
     };
 
-    if(even(10) !== true) {
+    if (even(10) !== true) {
       throw new Error('10 should be even!');
     }
   });
@@ -83,15 +83,23 @@ describe('Visa', function() {
   var assert = chai.assert;
 
   it('has a prefix of 4 and a length of 13', function() {
-    assert.strictEqual(detectNetwork('4123456789012'), 'Visa', `'4123456789012' should be Visa`);
+    assert.strictEqual(detectNetwork('4123456789012'), 'Visa', '4123456789012 should be Visa');
   });
 
   it('has a prefix of 4 and a length of 16', function() {
-    assert.strictEqual(detectNetwork('4123456789012345'),'Visa',`'4123456789012345' should be Visa`);
+    assert.strictEqual(
+        detectNetwork('4123456789012345'),
+        'Visa',
+        '4123456789012345 should be Visa'
+      );
   });
 
   it('has a prefix of 4 and a length of 19', function() {
-    assert.strictEqual(detectNetwork('4123456789012345678'),'Visa',`'4123456789012345678' should be Visa`);
+    assert.strictEqual(
+        detectNetwork('4123456789012345678'),
+        'Visa',
+        '4123456789012345678 should be Visa'
+      );
   });
 });
 
@@ -103,13 +111,13 @@ describe('MasterCard', function() {
   var expect = chai.expect;
 
   it('has a prefix of 51 and a length of 14', function() {
-    expect(detectNetwork('5112345678901234')).to.equal('MasterCard', `'5112345678901234' should be MasterCard`);
+    expect(detectNetwork('5112345678901234')).to.equal('MasterCard', 'should be MasterCard');
   });
   it('has a prefix of 52 and a length of 14', function() {
-    expect(detectNetwork('5212345678901234')).to.equal('MasterCard', `'5212345678901234' should be MasterCard`);
+    expect(detectNetwork('5212345678901234')).to.equal('MasterCard', 'should be MasterCard');
   });
   it('has a prefix of 53 and a length of 14', function() {
-    expect(detectNetwork('5312345678901234')).to.equal('MasterCard', `'5312345678901234' should be MasterCard`);
+    expect(detectNetwork('5312345678901234')).to.equal('MasterCard', 'should be MasterCard');
   });
 
   // You can also use should instead of expect, which changes the style
@@ -121,10 +129,10 @@ describe('MasterCard', function() {
   // use either expect or should, but not both.
 
   it('has a prefix of 54 and a length of 16', function() {
-    expect(detectNetwork('5412345678901234')).to.equal('MasterCard', `'5412345678901234' should be MasterCard`);
+    expect(detectNetwork('5412345678901234')).to.equal('MasterCard', 'should be MasterCard');
   });
   it('has a prefix of 55 and a length of 16', function() {
-    expect(detectNetwork('5512345678901234')).to.equal('MasterCard', `'5512345678901234' should be MasterCard`);
+    expect(detectNetwork('5512345678901234')).to.equal('MasterCard', 'should be MasterCard');
   });
 });
 
@@ -134,52 +142,52 @@ describe('Discover', function() {
   var expect = chai.expect;
 
   it('has a prefix of 6011 and a length of 16', function() {
-    expect(detectNetwork('6011567890123456')).to.equal('Discover', `'6011567890123456' should be Discover`);
+    expect(detectNetwork('6011567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 6011 and a length of 19', function() {
-    expect(detectNetwork('6011567890123456789')).to.equal('Discover', `'6011567890123456789' should be Discover`);
+    expect(detectNetwork('6011567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 644 and a length of 16', function() {
-    expect(detectNetwork('6444567890123456')).to.equal('Discover', `'6444567890123456' should be Discover`);
+    expect(detectNetwork('6444567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 644 and a length of 19', function() {
-    expect(detectNetwork('6444567890123456789')).to.equal('Discover', `'6444567890123456789' should be Discover`);
+    expect(detectNetwork('6444567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 645 and a length of 16', function() {
-    expect(detectNetwork('6454567890123456')).to.equal('Discover', `'6454567890123456' should be Discover`);
+    expect(detectNetwork('6454567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 645 and a length of 19', function() {
-    expect(detectNetwork('6454567890123456789')).to.equal('Discover', `'6454567890123456789' should be Discover`);
+    expect(detectNetwork('6454567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 646 and a length of 16', function() {
-    expect(detectNetwork('6464567890123456')).to.equal('Discover', `'6464567890123456' should be Discover`);
+    expect(detectNetwork('6464567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 646 and a length of 19', function() {
-    expect(detectNetwork('6464567890123456789')).to.equal('Discover', `'6464567890123456789' should be Discover`);
+    expect(detectNetwork('6464567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 647 and a length of 16', function() {
-    expect(detectNetwork('6474567890123456')).to.equal('Discover', `'6474567890123456' should be Discover`);
+    expect(detectNetwork('6474567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 647 and a length of 19', function() {
-    expect(detectNetwork('6474567890123456789')).to.equal('Discover', `'6474567890123456789' should be Discover`);
+    expect(detectNetwork('6474567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 648 and a length of 16', function() {
-    expect(detectNetwork('6484567890123456')).to.equal('Discover', `'6484567890123456' should be Discover`);
+    expect(detectNetwork('6484567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 648 and a length of 19', function() {
-    expect(detectNetwork('6484567890123456789')).to.equal('Discover', `'6484567890123456789' should be Discover`);
+    expect(detectNetwork('6484567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 649 and a length of 16', function() {
-    expect(detectNetwork('6494567890123456')).to.equal('Discover', `'6494567890123456' should be Discover`);
+    expect(detectNetwork('6494567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 649 and a length of 19', function() {
-    expect(detectNetwork('6494567890123456789')).to.equal('Discover', `'6494567890123456' should be Discover`);
+    expect(detectNetwork('6494567890123456789')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 65 and a length of 16', function() {
-    expect(detectNetwork('6534567890123456')).to.equal('Discover', `'6534567890123456' should be Discover`);
+    expect(detectNetwork('6534567890123456')).to.equal('Discover', 'should be Discover');
   });
   it('has a prefix of 65 and a length of 19', function() {
-    expect(detectNetwork('6534567890123456789')).to.equal('Discover', `'6534567890123456789' should be Discover`);
+    expect(detectNetwork('6534567890123456789')).to.equal('Discover', 'should be Discover');
   });
 });
 
@@ -187,7 +195,7 @@ describe('Maestro', function() {
   // Write full test coverage for the Maestro card
   var expect = chai.expect;
 
-  var prefixTestValues = ['5018', '5020', '5038', '6304'];
+  var prefixValues = ['5018', '5020', '5038', '6304'];
   var endOfCardNumber = [
     '56789012',
     '567890123',
@@ -199,22 +207,23 @@ describe('Maestro', function() {
     '567890123456789'
   ];
 
-  for (var i = 0; i < prefixTestValues.length; i++){
-    for (var j = 0; j < endOfCardNumber.length; j++ ){
-      var testValue = prefixTestValues[i] + endOfCardNumber[j];
+  for (var i = 0; i < prefixValues.length; i++) {
+    for (var j = 0; j < endOfCardNumber.length; j++) {
+      var testValue = prefixValues[i] + endOfCardNumber[j];
       var length = testValue.length;
       (function(testValue, length) {
-        it('it has a prefix of ' + prefixTestValues[i] + ' and a length of ' + length + ' ', function() {
-          expect(detectNetwork(testValue)).to.equal('Maestro', `${testValue} should be Maestro`);
+        it('it has a prefix of ' + prefixValues[i] + ' and a length of ' + length, function() {
+          var actual = detectNetwork(testValue);
+          expect(actual).to.equal('Maestro', testValue + ' should be Maestro');
         });
-      })(testValue, length)
+      })(testValue, length);
     }
   }
 });
 
 describe('China UnionPay', function() {
 
-  var testChinaUnionPay = function(prefixStart, prefixEnd){
+  var testChinaUnionPay = function(prefixStart, prefixEnd) {
     var minLength = 16;
     var maxLength = 19;
     var testValue = '';
@@ -223,45 +232,45 @@ describe('China UnionPay', function() {
 
     var expect = chai.expect;
 
-    for (var prefix = prefixStart; prefix <= prefixEnd; prefix++){
-      for (var length = minLength; length <= maxLength; length++){
+    for (var prefix = prefixStart; prefix <= prefixEnd; prefix++) {
+      for (var length = minLength; length <= maxLength; length++) {
 
         testValueLength = length - String(prefix).length;
-        testValue = prefix + endOfNumber.slice(0,testValueLength);
+        testValue = prefix + endOfNumber.slice(0, testValueLength);
 
         (function(prefix, testValue, length) {
           it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
-            expect(detectNetwork(testValue)).to.equal('China UnionPay', testValue + ' should be China UnionPay');
+            var actual = detectNetwork(testValue);
+            expect(actual).to.equal('China UnionPay', testValue + ' should be China UnionPay');
           });
-        })(prefix, testValue, length)
+        })(prefix, testValue, length);
       }
     }
-  }
+  };
   testChinaUnionPay(622126, 622925);
-  testChinaUnionPay(624,626);
-  testChinaUnionPay(6282,6288);
+  testChinaUnionPay(624, 626);
+  testChinaUnionPay(6282, 6288);
 });
 
 describe('Switch', function() {
   var prefixes = [4903, 4905, 4911, 4936, 564182, 633110, 6333, 6759];
   var approvedLengths = [16, 18, 19];
   var endOfCardNumber = '1234567890123456789';
-  var prefix;
+  var prefix, testValueLength;
   var testValue = '';
-  var testValueLength;
   var expect = chai.expect;
 
-  for (var i = 0; i < prefixes.length; i++){
+  for (var i = 0; i < prefixes.length; i++) {
     prefix = prefixes[i];
-    for (var j = 0; j < approvedLengths.length; j++){
+    for (var j = 0; j < approvedLengths.length; j++) {
       testValueLength = approvedLengths[j] - String(prefix).length;
-      testValue = prefix + endOfCardNumber.slice(0,testValueLength);
+      testValue = prefix + endOfCardNumber.slice(0, testValueLength);
 
-      (function(prefix, testValue, length){
-        it(`it has a prefix of ${prefix} and a length of ${length}`, function() {
-          expect(detectNetwork(testValue)).to.equal('Switch', `${testValue} should be Switch`);
+      (function(prefix, testValue, length) {
+        it('it has a prefix of ' + prefix + ' and a length of ' + length, function() {
+          expect(detectNetwork(testValue)).to.equal('Switch', testValue + ' should be Switch');
         });
-      })(prefix, testValue, testValueLength)
+      })(prefix, testValue, testValueLength);
     }
   }
 });
